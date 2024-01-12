@@ -22,6 +22,14 @@ public class Onlineshop {
         for(Kunde k : Kunde.kunden.values()){
             System.out.println("\nKunde: " + k.getName() + " => " + k.getNummer());
         }
+
+        // Liest die Daten aus der SQL-Tabelle Kunde aus und erstellt für jede Zeile ein Java-Objekt
+        AdresseController.selectAdresse();
+
+
+        for(Adresse adresse : Adresse.adressen.values()){
+            System.out.println("\nAdresse:\nKunde: " + adresse.getKunde().getName() + "\nStraße: " + adresse.getStraße() + " " + adresse.getHausnummer()   + "\nOrt: " + adresse.getPlz() + " " + adresse.getOrt());
+        }
     }
 
 }

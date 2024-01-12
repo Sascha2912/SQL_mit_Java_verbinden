@@ -30,6 +30,7 @@ public class ArtikelController {
 
         }catch(SQLException ex){
             ex.printStackTrace();
+
         }finally{
             if(connection != null){
                 try{

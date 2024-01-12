@@ -1,5 +1,6 @@
 public class Onlineshop {
 
+
     public static void main(String[] args) {
 
         // Liest die Daten aus der SQL-Tabelle Hersteller aus und erstellt für jede Zeile ein Java-Objekt
@@ -38,7 +39,22 @@ public class Onlineshop {
             System.out.println("\nKunde: " + bestellung.getKunde().getName() + "\nRechnungsadresse: " + bestellung.getRechnungsadresse().getStraße() + " " + bestellung.getRechnungsadresse().getHausnummer() + "\nDatum: " + bestellung.getDatum());
         }
 
+        // Liest die Daten aus der SQL-Tabelle Bestellposition aus und erstellt für jede Zeile ein Java-Objekt
+        BestellpositionController.selectBestellposition();
 
+        for(Bestellposition bestellposition : Bestellposition.bestellpositionen.values()){
+            System.out.println("Kunde: " + bestellposition.getBestellung().getKunde().getName() + "\nBestellung: " + bestellposition.getArtikel().getBezeichnung() + " x " + bestellposition.getAnzahl() + "\nDatum: " + bestellposition.getBestellung().getDatum());
+        }
+
+    }
+
+    public static void createDatabase(){
+        HerstellerController.selectHersteller();
+        ArtikelController.selectArtikel();
+        KundeController.selectKunde();
+        AdresseController.selectAdresse();
+        BestellungController.selectBestellung();
+        BestellpositionController.selectBestellposition();
     }
 
 }

@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class HerstellerController {
 
@@ -40,5 +37,37 @@ public class HerstellerController {
             }
         }
     }
+
+    public static Hersteller createHersteller(String name){
+
+        Hersteller h = null;
+
+        try(
+                Connection connection = MySQL.getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "INSERT INTO hersteller (name) VALUES (?)", Statement.RETURN_GENERATED_KEYS
+                );
+        ){
+            statement.setString(1, name);
+            statement.executeUpdate();
+
+            ResultSet rs = statement.getGeneratedKeys();
+
+            if(rs.next() ){
+                int nummer = rs.getInt(1);
+                h = new Hersteller(nummer, name);
+            }
+            return h;
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return h;
+        }
+
+    }
+
+
+
+
+
 
 }

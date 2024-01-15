@@ -3,6 +3,7 @@ public class Onlineshop {
 
     public static void main(String[] args) {
 
+
         // Liest die Daten aus der SQL-Tabelle Hersteller aus und erstellt für jede Zeile ein Java-Objekt
         HerstellerController.selectHersteller();
 
@@ -45,6 +46,11 @@ public class Onlineshop {
         for(Bestellposition bestellposition : Bestellposition.bestellpositionen.values()){
             System.out.println("Kunde: " + bestellposition.getBestellung().getKunde().getName() + "\nBestellung: " + bestellposition.getArtikel().getBezeichnung() + " x " + bestellposition.getAnzahl() + "\nDatum: " + bestellposition.getBestellung().getDatum());
         }
+
+
+        Hersteller test = HerstellerController.createHersteller("test");
+        System.out.println("Inserted: " + test.getNumber() + " => " + test.getName());
+
 
     }
 

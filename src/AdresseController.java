@@ -49,24 +49,35 @@ public class AdresseController {
         Adresse newAdresse = null;
 
         try(
+                // Verbindung zur Datenbank herstellen
                 Connection connection = MySQL.getConnection();
+                // Vorläufiges Statement definieren und im Objekt statement speichern.
                 PreparedStatement statement = connection.prepareStatement(
+                        // SQL-Befehl mit angabe der Tabelle "adresse" und angabe der Spalten "straße, plz, ort, hausnummer, kunde" mit noch nicht definierten VALUES "?, ?, ?, ?, ?"
+                        // auslesen des Primary-Keys durch den Befehl "Statement.RETURN_GENERATED_KEYS"
                         "INSERT INTO adresse (straße, plz, ort, hausnummer, kunde) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS
                 );
 
         ){
+            // Reihenfolge und Werte der vorläufigen Values zuweisen.
             statement.setString(1, straße);
             statement.setInt(2, plz);
             statement.setString(3, ort);
             statement.setInt(4, hausnummer);
             statement.setInt(5, kunde.getNummer());
+
+            // fertiges SQL-Statement ausführen.
+            // Neuen Datensatz mit dem Übergabe-Parameter der Funktion in der SQL-Datenbank Tabelle adresse erstellen.
             statement.executeUpdate();
 
+            // Datenbankabfrage des Primary-Keys im Objekt rs speichern
             ResultSet rs = statement.getGeneratedKeys();
 
             if(rs.next()){
+                // Primary-Key aus dem Objekt rs auslesen und in der int Variablen id abspeichern.
                 int id = rs.getInt(1);
 
+                // Neues adressenObjekt erstellen mit den Übergabe-Parametern aus der Funktion. Das Objekt ist ein Abbild des neu erzeugten Datensatzes in der SQL-Datenbank Tabelle adresse.
                 newAdresse = new Adresse(id,straße, plz, ort, hausnummer, kunde);
             }
 

@@ -67,8 +67,21 @@ public class Onlineshop {
 
         KundeController.createKunde("Alfie");
 
+        Hersteller alfieHersteller = HerstellerController.createHersteller("AlfieGmbH");
+
+        Artikel alfieArtikel = ArtikelController.createArtikel("Der Alfie 3000", BigDecimal.valueOf(450.49), alfieHersteller);
+
         Kunde rudi = KundeController.createKunde("Rudi");
-        AdresseController.createAdresse("teststraße",12345, "Castrop testen", 4, rudi);
+        Adresse rudiAdresse1 = AdresseController.createAdresse("teststraße", 12345, "Castrop testen", 4, rudi);
+
+        Adresse rudiAdresse2 = AdresseController.createAdresse("straßentest", 12345, "Castrop testen", 11, rudi);
+
+
+        Bestellung rudisBestellung = BestellungController.createBestellung(rudi, rudiAdresse1, rudiAdresse2, "2024-11-15 09:55:35");
+
+        Bestellposition rudisBestellposition = BestellpositionController.createBestellposition(rudisBestellung, alfieArtikel, 4);
+
+        System.out.println("Bestelldatum: " + rudisBestellposition.getBestellung().getDatum() + " Artikel: " + rudisBestellposition.getArtikel().getBezeichnung() + " Anzahl: " + rudisBestellposition.getAnzahl());
         */
 
 

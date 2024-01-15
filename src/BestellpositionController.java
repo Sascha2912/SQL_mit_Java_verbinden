@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class BestellpositionController {
 
@@ -40,6 +37,30 @@ public class BestellpositionController {
                 }
             }
         }
+    }
+
+    public static Bestellposition createBestellposition(Bestellung bestellung, Artikel artikel, int anzahl){
+        Bestellposition newBestellposition = null;
+
+        try(
+                Connection connection = MySQL.getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "INSERT INTO bestellposition (bestellung, artikel, anzahl) VALUES (?, ?, ?)"
+                );
+        ){
+            statement.setInt(1, bestellung.getNummer());
+            statement.setInt(2, artikel.getNummer());
+            statement.setInt(3, anzahl);
+            statement.executeUpdate();
+
+            newBestellposition = new Bestellposition(bestellung, artikel, anzahl);
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+
+
+        return newBestellposition;
     }
 
 }

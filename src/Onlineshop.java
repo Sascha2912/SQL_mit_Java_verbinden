@@ -51,7 +51,8 @@ public class Onlineshop {
 
         // ******* Verändern der Datenbank *******
 
-        /*Hersteller testHersteller = HerstellerController.createHersteller("test");
+        /*
+        Hersteller testHersteller = HerstellerController.createHersteller("test");
         System.out.println("Inserted: " + testHersteller.getNumber() + " => " + testHersteller.getName());
 
         Artikel testArtikel = ArtikelController.createArtikel("testArtikel", BigDecimal.valueOf(50.0), testHersteller);
@@ -68,8 +69,8 @@ public class Onlineshop {
 
         Kunde rudi = KundeController.createKunde("Rudi");
         AdresseController.createAdresse("teststraße",12345, "Castrop testen", 4, rudi);
+        */
 
-*/
 
 
     }

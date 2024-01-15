@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class KundeController {
 
@@ -43,6 +40,36 @@ public class KundeController {
             }
 
         }
+
+    }
+
+    public static Kunde createKunde(String name){
+
+        Kunde newKunde = null;
+
+        try(
+                Connection connection = MySQL.getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "INSERT INTO kunde (name) VALUES (?)", Statement.RETURN_GENERATED_KEYS
+                );
+        ){
+
+            statement.setString(1, name);
+            statement.executeUpdate();
+
+            ResultSet rs = statement.getGeneratedKeys();
+
+            if( rs.next()){
+                int nummer = rs.getInt(1);
+
+                newKunde = new Kunde(nummer, name);
+            }
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+
+        return newKunde;
 
     }
 

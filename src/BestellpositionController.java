@@ -64,5 +64,27 @@ public class BestellpositionController {
     }
 
 
+    public static boolean updateBestellposition(Bestellposition bestellposition, String attribute, Object wert){
+
+        try(
+              Connection connection = MySQL.getConnection();
+              PreparedStatement statement = connection.prepareStatement(
+                      "UPDATE bestellposition SET " + attribute + " = ? WHERE bestellung = " + bestellposition.getBestellung().getNummer() + " AND artikel = " + bestellposition.getArtikel().getNummer()
+              );
+        ){
+            statement.setObject(1, wert);
+
+            int anzahl = statement.executeUpdate();
+
+            return anzahl == 1;
+
+        }catch(SQLException ex){
+
+            ex.printStackTrace();
+
+            return false;
+
+        }
+    }
 
 }

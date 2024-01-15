@@ -82,8 +82,10 @@ public class ArtikelController {
             int anzahl = statement.executeUpdate();
 
              return anzahl == 1;
+
         }catch(SQLException ex){
             ex.printStackTrace();
+
             return false;
         }
     }

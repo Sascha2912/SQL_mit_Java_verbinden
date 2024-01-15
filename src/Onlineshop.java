@@ -99,6 +99,7 @@ public class Onlineshop {
         Bestellposition updateBestellposition = BestellpositionController.createBestellposition(updateBestellung, updateArtikel, 2);
 
         //AdresseController.updateAdresse(updateAdresse2, "plz", 54321);
+        BestellungController.updateBestellung(updateBestellung, "datum", "2023-06-15 09:55:35");
 
 
 

@@ -81,5 +81,28 @@ public class BestellungController {
         return newBestellung;
     }
 
+    public static boolean updateBestellung(Bestellung bestellung, String attribut, Object wert){
+
+        try(
+                Connection connection = MySQL.getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "UPDATE bestellung SET " + attribut + " = ? WHERE nummer = " + bestellung.getNummer()
+                );
+        ){
+            statement.setObject(1, wert);
+
+            int anzahl = statement.executeUpdate();
+
+            return anzahl == 1;
+
+        }catch(SQLException ex){
+
+            ex.printStackTrace();
+
+            return false;
+        }
+
+    }
+
 }
 

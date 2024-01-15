@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 public class Onlineshop {
 
 
@@ -48,8 +50,11 @@ public class Onlineshop {
         }
 
 
-        Hersteller test = HerstellerController.createHersteller("test");
-        System.out.println("Inserted: " + test.getNumber() + " => " + test.getName());
+        Hersteller testHersteller = HerstellerController.createHersteller("test");
+        System.out.println("Inserted: " + testHersteller.getNumber() + " => " + testHersteller.getName());
+
+        Artikel testArtikel = ArtikelController.createArtikel("testArtikel", BigDecimal.valueOf(50.0), testHersteller);
+        System.out.println("Inserted: " + testArtikel.getBezeichnung() + " " + testArtikel.getPreis() +  " " + " von: " + testArtikel.getHersteller().getName());
 
 
     }

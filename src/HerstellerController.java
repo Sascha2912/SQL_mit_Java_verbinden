@@ -40,7 +40,7 @@ public class HerstellerController {
 
     public static Hersteller createHersteller(String name){
 
-        Hersteller h = null;
+        Hersteller newHersteller = null;
 
         try(
                 Connection connection = MySQL.getConnection();
@@ -55,13 +55,14 @@ public class HerstellerController {
 
             if(rs.next() ){
                 int nummer = rs.getInt(1);
-                h = new Hersteller(nummer, name);
+                newHersteller = new Hersteller(nummer, name);
             }
-            return h;
+
         }catch(SQLException ex){
             ex.printStackTrace();
-            return h;
+
         }
+        return newHersteller;
 
     }
 

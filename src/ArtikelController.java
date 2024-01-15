@@ -1,8 +1,5 @@
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class ArtikelController {
 
@@ -41,6 +38,35 @@ public class ArtikelController {
                 }
             }
         }
+    }
+
+    public static Artikel createArtikel(String bezeichnung, BigDecimal preis, Hersteller hersteller){
+        Artikel newArtikel = null;
+
+        try(
+                Connection connection = MySQL.getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "INSERT INTO artikel (bezeichnung, preis, hersteller) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS
+                );
+        ){
+            statement.setString(1, bezeichnung);
+            statement.setBigDecimal(2, preis);
+            statement.setInt(3,hersteller.getNumber());
+            statement.executeUpdate();
+
+            ResultSet rs = statement.getGeneratedKeys();
+
+            if( rs.next() ){
+                int nummer = rs.getInt(1);
+
+                newArtikel = new Artikel(nummer, bezeichnung, preis, hersteller);
+            }
+
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return newArtikel;
     }
 
 }

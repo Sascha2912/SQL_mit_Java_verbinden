@@ -84,6 +84,11 @@ public class Onlineshop {
         System.out.println("Bestelldatum: " + rudisBestellposition.getBestellung().getDatum() + " Artikel: " + rudisBestellposition.getArtikel().getBezeichnung() + " Anzahl: " + rudisBestellposition.getAnzahl());
         */
 
+        Kunde willi = KundeController.createKunde("Wielie");
+        KundeController.updateKunde(willi, "name", "Willi");
+
+
+
 
 
     }

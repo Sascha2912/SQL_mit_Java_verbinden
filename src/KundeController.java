@@ -73,4 +73,27 @@ public class KundeController {
 
     }
 
+    public static boolean updateKunde(Kunde kunde, String attribute, Object wert){
+
+        try(
+                Connection connection = MySQL.getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "UPDATE kunde SET " + attribute + " = ? WHERE nummer = " + kunde.getNummer()
+                );
+        ){
+            statement.setObject(1, wert);
+
+            int anzahl = statement.executeUpdate();
+
+            return anzahl == 1;
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+
+        }
+
+    }
+
+
 }

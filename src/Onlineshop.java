@@ -84,8 +84,21 @@ public class Onlineshop {
         System.out.println("Bestelldatum: " + rudisBestellposition.getBestellung().getDatum() + " Artikel: " + rudisBestellposition.getArtikel().getBezeichnung() + " Anzahl: " + rudisBestellposition.getAnzahl());
         */
 
-        Kunde willi = KundeController.createKunde("Wielie");
-        KundeController.updateKunde(willi, "name", "Willi");
+        Hersteller updateHersteller = HerstellerController.createHersteller("UpdateGMBH");
+
+        Artikel updateArtikel = ArtikelController.createArtikel("Das update 3000", BigDecimal.valueOf(450.49), updateHersteller);
+
+        Kunde updateKunde = KundeController.createKunde("UPDATE Kunde");
+        Adresse updateAdresse1 = AdresseController.createAdresse("updatestraße", 54321, "Castrop update", 4, updateKunde);
+
+        Adresse updateAdresse2 = AdresseController.createAdresse("straßenupdate", 12345, "Castropupdate", 11, updateKunde);
+
+
+        Bestellung updateBestellung = BestellungController.createBestellung(updateKunde, updateAdresse1, updateAdresse2, "2024-11-15 09:55:35");
+
+        Bestellposition updateBestellposition = BestellpositionController.createBestellposition(updateBestellung, updateArtikel, 2);
+
+        //AdresseController.updateAdresse(updateAdresse2, "plz", 54321);
 
 
 

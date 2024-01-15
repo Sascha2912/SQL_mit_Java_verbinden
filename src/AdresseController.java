@@ -89,4 +89,25 @@ public class AdresseController {
 
     }
 
+    public static boolean updateAdresse(Adresse adresse, String attribute, Object wert){
+
+        try(
+             Connection connection = MySQL.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "UPDATE adresse SET " + attribute + " = ? WHERE id = " + adresse.getId()
+             );
+        ){
+            statement.setObject(1, wert);
+
+            int anzahl = statement.executeUpdate();
+
+            return anzahl == 1;
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+
 }

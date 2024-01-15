@@ -49,8 +49,9 @@ public class Onlineshop {
             System.out.println("Kunde: " + bestellposition.getBestellung().getKunde().getName() + "\nBestellung: " + bestellposition.getArtikel().getBezeichnung() + " x " + bestellposition.getAnzahl() + "\nDatum: " + bestellposition.getBestellung().getDatum());
         }
 
+        // ******* Verändern der Datenbank *******
 
-        Hersteller testHersteller = HerstellerController.createHersteller("test");
+        /*Hersteller testHersteller = HerstellerController.createHersteller("test");
         System.out.println("Inserted: " + testHersteller.getNumber() + " => " + testHersteller.getName());
 
         Artikel testArtikel = ArtikelController.createArtikel("testArtikel", BigDecimal.valueOf(50.0), testHersteller);
@@ -62,6 +63,13 @@ public class Onlineshop {
         testHersteller.setName("Der Tester");
         testArtikel.setBezeichnung("Hammer dingen");
         testArtikel.setPreis(BigDecimal.valueOf(3.50));
+
+        KundeController.createKunde("Alfie");
+
+        Kunde rudi = KundeController.createKunde("Rudi");
+        AdresseController.createAdresse("teststraße",12345, "Castrop testen", 4, rudi);
+
+*/
 
 
     }

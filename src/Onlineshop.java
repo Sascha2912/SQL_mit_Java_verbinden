@@ -61,6 +61,9 @@ public class Onlineshop {
 
         HerstellerController.updateHersteller(testHersteller, "name","tester");
 
+        ArtikelController.updateArtikel(testArtikel, "bezeichnung", "Hammer dingen");
+        ArtikelController.updateArtikel(testArtikel, "preis", 3.50);
+
 
     }
 

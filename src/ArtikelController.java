@@ -69,4 +69,23 @@ public class ArtikelController {
         return newArtikel;
     }
 
+    public static boolean updateArtikel(Artikel artikel, String attribut, Object wert){
+
+        try(
+                Connection connection = MySQL.getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "Update artikel SET " + attribut + " = ? WHERE nummer = " + artikel.getNummer()
+                );
+        ){
+            statement.setObject(1, wert);
+
+            int anzahl = statement.executeUpdate();
+
+             return anzahl == 1;
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
 }

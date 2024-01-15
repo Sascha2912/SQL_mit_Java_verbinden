@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class BestellungController {
 
@@ -52,5 +49,37 @@ public class BestellungController {
 
     }
 
+    public static Bestellung createBestellung(Kunde kunde, Adresse rechnungsadresse, Adresse lieferadresse, String datum){
+        Bestellung newBestellung = null;
+
+        try(
+                Connection connection = MySQL.getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "INSERT INTO bestellung (datum, kunde, rechnungsadresse, lieferadresse) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS
+                );
+
+        ){
+            statement.setString(1, datum);
+            statement.setInt(2, kunde.getNummer());
+            statement.setInt(3,rechnungsadresse.getId());
+            statement.setInt(4, lieferadresse.getId());
+            statement.executeUpdate();
+
+            ResultSet rs = statement.getGeneratedKeys();
+
+            if(rs.next()){
+                int nummer = rs.getInt(1);
+
+                newBestellung = new Bestellung(nummer, kunde, rechnungsadresse, lieferadresse, datum);
+            }
+
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+
+        return newBestellung;
     }
+
+}
 

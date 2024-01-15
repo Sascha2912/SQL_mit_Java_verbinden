@@ -78,6 +78,7 @@ public class HerstellerController {
 
             int anzahl = statement.executeUpdate();
 
+
             return anzahl == 1;
 
         }catch (SQLException ex){

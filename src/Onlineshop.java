@@ -59,10 +59,9 @@ public class Onlineshop {
         System.out.println("Inserted: " + testArtikel.getBezeichnung() + " " + testArtikel.getPreis() +  " " + " von: " + testArtikel.getHersteller().getName());
         }
 
-        HerstellerController.updateHersteller(testHersteller, "name","tester");
-
-        ArtikelController.updateArtikel(testArtikel, "bezeichnung", "Hammer dingen");
-        ArtikelController.updateArtikel(testArtikel, "preis", 3.50);
+        testHersteller.setName("Der Tester");
+        testArtikel.setBezeichnung("Hammer dingen");
+        testArtikel.setPreis(BigDecimal.valueOf(3.50));
 
 
     }

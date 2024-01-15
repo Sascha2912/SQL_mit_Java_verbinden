@@ -22,8 +22,9 @@ public class Hersteller {
     }
 
     public void setName(String name){
-        // TODO: Datenbank bescheid geben !!!
+        if(HerstellerController.updateHersteller(this, "name", name)){
         this.name = name;
+        }
     }
 
 

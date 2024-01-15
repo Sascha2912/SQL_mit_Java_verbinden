@@ -28,7 +28,9 @@ public class Artikel {
     }
 
     public void setBezeichnung(String bezeichnung){
-        this.bezeichnung = bezeichnung;
+        if(ArtikelController.updateArtikel(this,"bezeichnung",bezeichnung)){
+            this.bezeichnung = bezeichnung;
+        }
 
     }
 
@@ -37,8 +39,10 @@ public class Artikel {
     }
 
     public void setPreis(BigDecimal preis){
+        if(ArtikelController.updateArtikel(this, "preis", preis)){
 
         this.preis = preis;
+        }
 
     }
 

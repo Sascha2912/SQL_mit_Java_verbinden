@@ -45,7 +45,7 @@ public class Onlineshop {
         // Liest die Daten aus der SQL-Tabelle Bestellposition aus und erstellt für jede Zeile ein Java-Objekt
         BestellpositionController.selectBestellposition();
 
-        for(Bestellposition bestellposition : Bestellposition.bestellpositionen.values()){
+        for(Bestellposition bestellposition : Bestellposition.bestellpositionen){
             System.out.println("Kunde: " + bestellposition.getBestellung().getKunde().getName() + "\nBestellung: " + bestellposition.getArtikel().getBezeichnung() + " x " + bestellposition.getAnzahl() + "\nDatum: " + bestellposition.getBestellung().getDatum());
         }
 

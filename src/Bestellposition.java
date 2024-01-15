@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Bestellposition {
 
-    public static final HashMap<Integer, Bestellposition> bestellpositionen = new HashMap<>();
+    public static final List<Bestellposition> bestellpositionen = new ArrayList<>();
 
     private final Bestellung bestellung;
     private final Artikel artikel;
@@ -14,7 +16,7 @@ public class Bestellposition {
         this.artikel = artikel;
         this.anzahl = anzahl;
 
-        bestellpositionen.put(bestellung.getNummer() + artikel.getNummer(), this);
+        bestellpositionen.add(this);
 
     }
     public Bestellung getBestellung(){

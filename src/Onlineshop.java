@@ -103,6 +103,18 @@ public class Onlineshop {
 
         BestellpositionController.updateBestellposition(updateBestellposition, "anzahl", 6);
 
+        updateKunde.setName("Kundeupdate");
+
+        updateAdresse1.setOrt("Düse");
+        updateAdresse1.setPlz(67891);
+        updateAdresse1.setStraße("Düse-Street");
+        updateAdresse1.setHausnummer(24);
+
+        updateBestellung.setDatum("2024-12-31 23:59:59");
+
+        updateBestellposition.setAnzahl(9);
+
+
 
 
 

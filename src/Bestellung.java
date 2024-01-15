@@ -39,7 +39,9 @@ public class Bestellung {
         return this.datum;
     }
     public void setDatum(String datum){
-        this.datum = datum;
+        if(BestellungController.updateBestellung(this, "datum", datum)){
+            this.datum = datum;
+        }
     }
 
 }

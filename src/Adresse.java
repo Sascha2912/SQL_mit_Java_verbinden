@@ -30,14 +30,20 @@ public class Adresse {
         return this.straße;
     }
     public void setStraße(String straße){
+        if(AdresseController.updateAdresse(this, "straße", straße)){
+
         this.straße = straße;
+        }
     }
 
     public int getPlz(){
         return this.plz;
     }
     public void setPlz(int plz){
-        this.plz = plz;
+        if(AdresseController.updateAdresse(this, "plz", plz)){
+            this.plz = plz;
+        }
+
     }
 
     public String getOrt(){
@@ -45,14 +51,19 @@ public class Adresse {
     }
 
     public void setOrt(String ort){
-        this.ort = ort;
+        if(AdresseController.updateAdresse(this, "ort", ort)){
+            this.ort = ort;
+        }
+
     }
 
     public int getHausnummer(){
         return this.hausnummer;
     }
     public void setHausnummer(int hausnummer){
-        this.hausnummer = hausnummer;
+        if(AdresseController.updateAdresse(this, "hausnummer", hausnummer)){
+            this.hausnummer = hausnummer;
+        }
     }
 
     public Kunde getKunde(){

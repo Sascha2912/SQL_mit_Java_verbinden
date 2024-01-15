@@ -31,6 +31,8 @@ public class Bestellposition {
     }
 
     public void setAnzahl(int anzahl){
-        this.anzahl = anzahl;
+        if(BestellpositionController.updateBestellposition(this, "anzahl", anzahl)){
+            this.anzahl = anzahl;
+        }
     }
 }

@@ -23,7 +23,10 @@ public class Kunde {
     }
 
     public void setName(String name){
+        if(KundeController.updateKunde(this, "name", name)){
+
         this.name = name;
+        }
     }
 
 

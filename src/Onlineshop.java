@@ -5,7 +5,7 @@ public class Onlineshop {
 
     public static void main(String[] args) {
 
-
+        /*
         // Liest die Daten aus der SQL-Tabelle Hersteller aus und erstellt für jede Zeile ein Java-Objekt
         HerstellerController.selectHersteller();
 
@@ -51,7 +51,7 @@ public class Onlineshop {
 
         // ******* Verändern der Datenbank *******
 
-/*        Hersteller testHersteller = HerstellerController.createHersteller("test");
+        Hersteller testHersteller = HerstellerController.createHersteller("test");
         System.out.println("Inserted: " + testHersteller.getNumber() + " => " + testHersteller.getName());
 
         Artikel testArtikel = ArtikelController.createArtikel("testArtikel", BigDecimal.valueOf(50.0), testHersteller);
@@ -112,7 +112,7 @@ public class Onlineshop {
 
         updateBestellposition.setAnzahl(9);*/
 
-        Controller.selectAll();
+        System.out.println(Controller.selectAll());
 
 
 

@@ -51,8 +51,7 @@ public class Onlineshop {
 
         // ******* Verändern der Datenbank *******
 
-        /*
-        Hersteller testHersteller = HerstellerController.createHersteller("test");
+/*        Hersteller testHersteller = HerstellerController.createHersteller("test");
         System.out.println("Inserted: " + testHersteller.getNumber() + " => " + testHersteller.getName());
 
         Artikel testArtikel = ArtikelController.createArtikel("testArtikel", BigDecimal.valueOf(50.0), testHersteller);
@@ -82,7 +81,6 @@ public class Onlineshop {
         Bestellposition rudisBestellposition = BestellpositionController.createBestellposition(rudisBestellung, alfieArtikel, 4);
 
         System.out.println("Bestelldatum: " + rudisBestellposition.getBestellung().getDatum() + " Artikel: " + rudisBestellposition.getArtikel().getBezeichnung() + " Anzahl: " + rudisBestellposition.getAnzahl());
-        */
 
         Hersteller updateHersteller = HerstellerController.createHersteller("UpdateGMBH");
 
@@ -98,8 +96,8 @@ public class Onlineshop {
 
         Bestellposition updateBestellposition = BestellpositionController.createBestellposition(updateBestellung, updateArtikel, 2);
 
-        //AdresseController.updateAdresse(updateAdresse2, "plz", 54321);
-        //BestellungController.updateBestellung(updateBestellung, "datum", "2023-06-15 09:55:35");
+        AdresseController.updateAdresse(updateAdresse2, "plz", 54321);
+        BestellungController.updateBestellung(updateBestellung, "datum", "2023-06-15 09:55:35");
 
         BestellpositionController.updateBestellposition(updateBestellposition, "anzahl", 6);
 
@@ -112,9 +110,9 @@ public class Onlineshop {
 
         updateBestellung.setDatum("2024-12-31 23:59:59");
 
-        updateBestellposition.setAnzahl(9);
+        updateBestellposition.setAnzahl(9);*/
 
-
+        Controller.selectAll();
 
 
 

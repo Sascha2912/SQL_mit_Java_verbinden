@@ -114,9 +114,9 @@ public class Onlineshop {
         updateBestellposition.setAnzahl(9);
 
         // Testen der View selectAll
-        System.out.println(Controller.selectAll());
+        System.out.println(SQLController.selectAll());
 
-        int neueID = Controller.insertArtikel("Autogramm von Alfie", BigDecimal.valueOf(643.89), 3);
+        int neueID = SQLController.insertArtikel("Autogramm von Alfie", BigDecimal.valueOf(643.89), 3);
         System.out.println("Ergebnis : " + neueID);
 
         ArtikelController.selectArtikel();
@@ -145,7 +145,6 @@ public class Onlineshop {
             System.out.println("");
 
         }
-        */
 
         // Testen Java Methode mit eigebundene SQL Prozedure
         Kunde Alfie = KundeController.createKunde("Alfie");
@@ -162,6 +161,8 @@ public class Onlineshop {
             System.out.println("");
 
         }
+         */
+
 
 
 

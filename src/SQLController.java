@@ -65,7 +65,7 @@ public class SQLController {
                 for(int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
 
                 //System.out.println(rs.getMetaData().getColumnLabel(i) + " - " + rs.getMetaData().getColumnName(i) + "\n");
-                sb.append(rs.getString(i)).append(" | ");
+                    sb.append(rs.getString(i)).append(" | ");
                 }
                 sb.append("\n");
 
@@ -74,6 +74,38 @@ public class SQLController {
 
         }catch(SQLException ex){
 
+            ex.printStackTrace();
+        }
+
+        return "";
+    }
+
+    public static String selectKundenDaten(){
+
+        try(
+             Connection connection = MySQL.getConnection();
+             Statement statement = connection.createStatement();
+        ) {
+            StringBuilder sb = new StringBuilder();
+            ResultSet rs = statement.executeQuery(
+                    "SELECT * FROM selectKundenDaten"
+            );
+            for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                sb.append(rs.getMetaData().getColumnName(i)).append(" | ");
+            }
+            sb.append("\n");
+            while (rs.next()) {
+
+
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                    sb.append(rs.getString(i)).append(" | ");
+                }
+                sb.append("\n");
+
+            }
+            return sb.toString();
+
+        }catch(SQLException ex){
             ex.printStackTrace();
         }
 

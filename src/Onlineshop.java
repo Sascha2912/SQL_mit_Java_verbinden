@@ -5,6 +5,7 @@ public class Onlineshop {
 
     public static void main(String[] args) {
 
+        getDatabase();
         /*
         // Liest die Daten aus der SQL-Tabelle Hersteller aus und erstellt für jede Zeile ein Java-Objekt
         HerstellerController.selectHersteller();
@@ -110,12 +111,13 @@ public class Onlineshop {
 
         updateBestellung.setDatum("2024-12-31 23:59:59");
 
-        updateBestellposition.setAnzahl(9);*/
+        updateBestellposition.setAnzahl(9);
 
-        // System.out.println(Controller.selectAll());
+        // Testen der View selectAll
+        System.out.println(Controller.selectAll());
 
-        // int neueID = Controller.insertArtikel("Autogramm von Alfie", BigDecimal.valueOf(643.89), 3);
-        // System.out.println("Ergebnis : " + neueID);
+        int neueID = Controller.insertArtikel("Autogramm von Alfie", BigDecimal.valueOf(643.89), 3);
+        System.out.println("Ergebnis : " + neueID);
 
         ArtikelController.selectArtikel();
 
@@ -127,9 +129,9 @@ public class Onlineshop {
 
         int result = SQLController.updateArtikelPreis(4, BigDecimal.valueOf(49.99));
         System.out.println("Result : " + result);
-
-
-
+        */
+        // Testen der View selectKundenDaten
+        System.out.println(SQLController.selectKundenDaten());
 
     }
 

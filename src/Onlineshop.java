@@ -129,9 +129,21 @@ public class Onlineshop {
 
         int result = SQLController.updateArtikelPreis(4, BigDecimal.valueOf(49.99));
         System.out.println("Result : " + result);
-        */
         // Testen der View selectKundenDaten
         System.out.println(SQLController.selectKundenDaten());
+        */
+
+        SQLController.insertArtikel("DerHammer", BigDecimal.valueOf(10.99), 1);
+        ArtikelController.selectArtikel();
+        for(Artikel tmpArtikel : Artikel.artikel.values()) {
+
+            System.out.println("Artikel: " + tmpArtikel.getBezeichnung());
+            System.out.println("Preis: " + tmpArtikel.getPreis());
+            System.out.println("Hertseller: " + tmpArtikel.getHersteller().getName());
+            System.out.println("");
+
+        }
+
 
     }
 

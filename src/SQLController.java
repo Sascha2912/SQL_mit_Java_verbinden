@@ -80,6 +80,7 @@ public class SQLController {
         return "";
     }
 
+    // Schnelle und präzise Abfrage aller Kunden um, die Kunden effizienter verwalten zu können.
     public static String selectKundenDaten(){
 
         try(
@@ -159,6 +160,32 @@ public class SQLController {
             return ergebnis;
 
 
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+
+        return -1;
+    }
+
+    public static int insertAdresse(String straße, int plz, String ort, int kunde, int hausnummer){
+
+        try(
+              Connection connection = MySQL.getConnection();
+              CallableStatement statement = connection.prepareCall(
+                      "CALL insertAdresse(?,?,?,?,?)"
+              );
+        ){
+            statement.setString(1, straße);
+            statement.setInt(2, plz);
+            statement.setString(3, ort);
+            statement.setInt(4, kunde);
+            statement.setInt(5, hausnummer);
+
+            statement.registerOutParameter(6, JDBCType.INTEGER);
+
+            int anzahl = statement.executeUpdate();
+
+            return anzahl;
         }catch(SQLException ex){
             ex.printStackTrace();
         }

@@ -72,10 +72,13 @@ public class ArtikelController {
      */
 
     public static Artikel createArtikel(String bezeichnung, BigDecimal preis, Hersteller hersteller){
-            int nummer = SQLController.insertArtikel(bezeichnung, preis, hersteller.getNumber());
-            Artikel newArtikel = new Artikel(nummer,bezeichnung, preis, hersteller);
-        System.out.println("ID " + nummer);
+        Artikel newArtikel = null;
+        int nummer = SQLController.insertArtikel(bezeichnung, preis, hersteller.getNumber());
 
+        if(nummer > 0){
+            newArtikel = new Artikel(nummer,bezeichnung, preis, hersteller);
+
+        }
 
         return newArtikel;
     }

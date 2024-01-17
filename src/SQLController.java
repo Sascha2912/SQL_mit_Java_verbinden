@@ -167,7 +167,7 @@ public class SQLController {
         try(
               Connection connection = MySQL.getConnection();
               CallableStatement statement = connection.prepareCall(
-                      "CALL insertAdresse(?,?,?,?,?)"
+                      "CALL insertAdresse(?, ?, ?, ?, ?, ?)"
               );
         ){
             statement.setString(1, straße);
@@ -178,9 +178,10 @@ public class SQLController {
 
             statement.registerOutParameter(6, JDBCType.INTEGER);
 
-            int anzahl = statement.executeUpdate();
+            if(statement.executeUpdate() > 0){
+                return statement.getInt(6);
+            }
 
-            return anzahl;
         }catch(SQLException ex){
             ex.printStackTrace();
         }

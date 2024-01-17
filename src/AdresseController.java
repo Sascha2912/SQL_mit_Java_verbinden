@@ -45,6 +45,7 @@ public class AdresseController {
 
     }
 
+    /*
     public static Adresse createAdresse(String straße, int plz, String ort, int hausnummer, Kunde kunde){
         Adresse newAdresse = null;
 
@@ -88,6 +89,22 @@ public class AdresseController {
         return newAdresse;
 
     }
+     */
+
+    public static Adresse createAdresse(String straße, int plz, String ort, int hausnummer, Kunde kunde){
+
+        Adresse newAdresse = null;
+
+        int id = SQLController.insertAdresse(straße, plz, ort, kunde.getNummer(), hausnummer);
+
+        if(id > 0 ){
+            newAdresse = new Adresse(id, straße, plz,ort,hausnummer,kunde);
+
+            return newAdresse;
+        }
+        return newAdresse;
+    }
+
 
     public static boolean updateAdresse(Adresse adresse, String attribute, Object wert){
 

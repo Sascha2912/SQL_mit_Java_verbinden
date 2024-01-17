@@ -147,6 +147,24 @@ public class Onlineshop {
         }
         */
 
+        // Testen Java Methode mit eigebundene SQL Prozedure
+        Kunde Alfie = KundeController.createKunde("Alfie");
+
+        AdresseController.createAdresse("Fahrdamm", 67891, "Düse", 88, Alfie);
+        AdresseController.selectAdresse();
+        for(Adresse tmpAdresse : Adresse.adressen.values()) {
+
+            System.out.println("Name: " + tmpAdresse.getKunde().getName());
+            System.out.println("Straße: " + tmpAdresse.getStraße());
+            System.out.println("HausNr.: " + tmpAdresse.getHausnummer());
+            System.out.println("PLZ: " + tmpAdresse.getPlz());
+            System.out.println("Ort: " + tmpAdresse.getOrt());
+            System.out.println("");
+
+        }
+
+
+
 
     }
 

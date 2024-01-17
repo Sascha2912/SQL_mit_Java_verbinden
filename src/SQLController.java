@@ -126,14 +126,9 @@ public class SQLController {
 
             statement.registerOutParameter(4, JDBCType.INTEGER);
 
-            int ergebnis = statement.executeUpdate();
+            if(statement.executeUpdate() > 0){
 
-            System.out.println("Anzahl Ergebniszeilen: " + ergebnis);
-
-            if(ergebnis > 0){
-                // System.out.println("Test\n" + );
-               return statement.getInt(4);
-
+            return statement.getInt(4);
             }
 
         }catch(SQLException ex){

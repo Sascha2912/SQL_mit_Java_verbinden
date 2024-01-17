@@ -131,9 +131,11 @@ public class Onlineshop {
         System.out.println("Result : " + result);
         // Testen der View selectKundenDaten
         System.out.println(SQLController.selectKundenDaten());
-        */
 
-        SQLController.insertArtikel("DerHammer", BigDecimal.valueOf(10.99), 1);
+        // Testen Java Methode mit eigebundene SQL Prozedure
+        Hersteller CreateGmbH = HerstellerController.createHersteller("Create GmbH");
+
+        ArtikelController.createArtikel("DerHammer", BigDecimal.valueOf(10.99), CreateGmbH);
         ArtikelController.selectArtikel();
         for(Artikel tmpArtikel : Artikel.artikel.values()) {
 
@@ -143,6 +145,7 @@ public class Onlineshop {
             System.out.println("");
 
         }
+        */
 
 
     }

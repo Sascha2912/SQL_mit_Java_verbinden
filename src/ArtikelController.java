@@ -40,6 +40,7 @@ public class ArtikelController {
         }
     }
 
+    /*
     public static Artikel createArtikel(String bezeichnung, BigDecimal preis, Hersteller hersteller){
         Artikel newArtikel = null;
 
@@ -66,6 +67,16 @@ public class ArtikelController {
         }catch(SQLException ex){
             ex.printStackTrace();
         }
+        return newArtikel;
+    }
+     */
+
+    public static Artikel createArtikel(String bezeichnung, BigDecimal preis, Hersteller hersteller){
+            int nummer = SQLController.insertArtikel(bezeichnung, preis, hersteller.getNumber());
+            Artikel newArtikel = new Artikel(nummer,bezeichnung, preis, hersteller);
+        System.out.println("ID " + nummer);
+
+
         return newArtikel;
     }
 

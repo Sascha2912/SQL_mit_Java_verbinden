@@ -47,7 +47,7 @@ public class Artikel {
     }
 
     public void setArtikelPreis(BigDecimal preis) {
-        if(Controller.updateArtikelPreis(this.nummer, preis) > 0){
+        if(SQLController.updateArtikelPreis(this.nummer, preis) > 0){
 
             this.preis = preis;
         }

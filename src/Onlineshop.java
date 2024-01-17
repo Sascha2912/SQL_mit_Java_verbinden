@@ -125,7 +125,7 @@ public class Onlineshop {
             }
         }
 
-        int result = Controller.updateArtikelPreis(4, BigDecimal.valueOf(49.99));
+        int result = SQLController.updateArtikelPreis(4, BigDecimal.valueOf(49.99));
         System.out.println("Result : " + result);
 
 

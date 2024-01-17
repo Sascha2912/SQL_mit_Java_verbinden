@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 import java.sql.*;
 
-public class Controller {
+public class SQLController {
 
     public static String selectAll(){
 

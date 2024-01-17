@@ -1,7 +1,5 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.math.BigDecimal;
+import java.sql.*;
 
 public class Controller {
 
@@ -80,6 +78,60 @@ public class Controller {
         }
 
         return "";
+    }
+
+    public static int insertArtikel(String bezeichnung, BigDecimal preis, int hersteller){
+
+        try(
+                Connection connection = MySQL.getConnection();
+                CallableStatement statement = connection.prepareCall(
+                "CALL insertArtikel(?, ?, ?, ?)")
+        ){
+            statement.setString(1, bezeichnung);
+            statement.setBigDecimal(2, preis);
+            statement.setInt(3, hersteller);
+
+            statement.registerOutParameter(4, JDBCType.INTEGER);
+
+            int ergebnis = statement.executeUpdate();
+
+            System.out.println("Anzahl Ergebniszeilen: " + ergebnis);
+
+            if(ergebnis > 0){
+                // System.out.println("Test\n" + );
+               return statement.getInt(4);
+
+            }
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+
+        return -1;
+    }
+
+    public static int updateArtikelPreis(int artikelNummer, BigDecimal preis){
+
+        try(
+             Connection connection = MySQL.getConnection();
+             CallableStatement statement = connection.prepareCall(
+                     "Call updateArtikelPreis(?, ?)"
+             )
+        ){
+            statement.setInt(1, artikelNummer);
+            statement.setBigDecimal(2, preis);
+
+            int ergebnis = statement.executeUpdate();
+                // Artikel.artikel.get(artikelNummer).setPreis(preis);
+                // ArtikelController.updateArtikel(Artikel.artikel.get(artikelNummer)., "preis", preis);
+            return ergebnis;
+
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+
+        return -1;
     }
 
 

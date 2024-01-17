@@ -112,7 +112,21 @@ public class Onlineshop {
 
         updateBestellposition.setAnzahl(9);*/
 
-        System.out.println(Controller.selectAll());
+        // System.out.println(Controller.selectAll());
+
+        // int neueID = Controller.insertArtikel("Autogramm von Alfie", BigDecimal.valueOf(643.89), 3);
+        // System.out.println("Ergebnis : " + neueID);
+
+        ArtikelController.selectArtikel();
+
+        for(Artikel tmpArtikel : Artikel.artikel.values()) {
+            if(tmpArtikel.getNummer() == 15) {
+                tmpArtikel.setArtikelPreis(BigDecimal.valueOf(38.44));
+            }
+        }
+
+        int result = Controller.updateArtikelPreis(4, BigDecimal.valueOf(49.99));
+        System.out.println("Result : " + result);
 
 
 

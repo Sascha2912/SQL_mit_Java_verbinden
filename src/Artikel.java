@@ -41,10 +41,18 @@ public class Artikel {
     public void setPreis(BigDecimal preis){
         if(ArtikelController.updateArtikel(this, "preis", preis)){
 
-        this.preis = preis;
+            this.preis = preis;
         }
 
     }
+
+    public void setArtikelPreis(BigDecimal preis) {
+        if(Controller.updateArtikelPreis(this.nummer, preis) > 0){
+
+            this.preis = preis;
+        }
+    }
+
 
     public Hersteller getHersteller(){
         return this.hersteller;
